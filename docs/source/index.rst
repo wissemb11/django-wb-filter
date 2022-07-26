@@ -69,6 +69,7 @@ navigate to the `Sign Up page <https://readthedocs.org/accounts/signup/>`_
 and choose the option :guilabel:`Sign up with GitHub`.
 On the authorization page, click the green :guilabel:`Authorize readthedocs` button.
 
+
 .. figure:: /_static/images/tutorial/github-authorization.png
    :width: 60%
    :align: center
