@@ -1,7 +1,13 @@
 Read the Docs tutorial
 ======================
 # maliaaaaa
+<<<<<<< HEAD
 # bacem chaabane ba7dhaya
+=======
+
+# bacem chaabane
+
+>>>>>>> 2803f3179612f84d71b83f859b90c99971689504
 i didn t understand 
 ==================
 ## maliaaaaa
