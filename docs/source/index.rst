@@ -11,21 +11,21 @@ do this.
     :maxdepth: 2
     :caption: User Guide
 
-    guide/install
-    guide/usage
-    guide/rest_framework
-    guide/tips
-    guide/migration
+    .. guide/install
+    .. guide/usage
+    .. guide/rest_framework
+    .. guide/tips
+    .. guide/migration
 
 .. toctree::
     :maxdepth: 1
     :caption: Reference Documentation
 
-    ref/filterset
-    ref/filters
-    ref/fields
-    ref/widgets
-    ref/settings
+    .. ref/filterset
+    .. ref/filters
+    .. ref/fields
+    .. ref/widgets
+    .. ref/settings
 
 .. toctree::
     :maxdepth: 1
