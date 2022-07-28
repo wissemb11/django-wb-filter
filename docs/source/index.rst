@@ -15,6 +15,33 @@ sub-title0-1
 ------------------
 sub-title0-2
 ------------------
+
+submodules.recursive
+````````````````````
+
+Do a recursive clone of the submodules.
+
+:Type: ``bool``
+:Default: ``false``
+
+.. note::
+
+   This is ignored if there aren't submodules to clone.
+
+search
+~~~~~~
+
+Settings for more control over :doc:`/server-side-search`.
+
+.. code-block:: yaml
+   version: 2
+   search:
+     ranking:
+       api/v1/*: -1
+       api/v2/*: 4
+     ignore:
+       - 404.html
+
 --------------------------------
 
 Title 1
