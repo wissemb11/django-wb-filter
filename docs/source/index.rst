@@ -7,6 +7,14 @@ ddddddddddddddddddddddddddddddddddddddddddddddddd
 Django-filter is a generic, reusable application to alleviate writing some of the more mundane bits of view code. Specifically, it allows users to filter down a queryset based on a model's fields, displaying the form to let them do this.
 
 --------------------------------
+=====================
+Django-wb-filter 0
+=====================
+--------------------------------
+=====================
+Django-wb-filter 1
+=====================
+--------------------------------
 
 .. toctree::
     :maxdepth: 2
