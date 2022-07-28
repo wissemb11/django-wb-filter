@@ -1,947 +1,853 @@
-Read the Docs tutorial
-======================
-# maliaaaaa
-
-# badii is the most powerful man in his mind.....
-
-============================================
-=======
-
-# bacem chaabane
-
-i didn t understand 
-==================
-## maliaaaaa
-==================
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-1st line  
-2nd line
-
-**bold**
-
-1. First item
-2. Second item
-3. Third item
-4. Fourth item
-==================
-In this tutorial you will create a documentation project on Read the Docs
-by importing an Sphinx project from a GitHub repository,
-tailor its configuration, and explore several useful features of the platform.
-ffffffffffffdddddddddd
-ddddddddddddddddddaaaaaaaaaaaaaaa
-vbvbcccccccccccccc
-#eeeeeeeeeeeeeeee
-
-The tutorial is aimed at people interested in learning
-how to use Read the Docs to host their documentation projects.
-You will fork a fictional software library
-similar to the one developed in the :doc:`official Sphinx tutorial <sphinx:tutorial/index>`.
-No prior experience with Sphinx is required,
-and you can follow this tutorial without having done the Sphinx one.
-
-The only things you will need to follow are
-a web browser, an Internet connection, and a GitHub account
-(you can `register for a free account <https://github.com/signup>`_ if you don't have one).
-You will use Read the Docs Community, which means that the project will be public.
-
-Getting started
----------------
-
-Preparing your project on GitHub
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To start, `sign in to GitHub <https://github.com/login>`_
-and navigate to `the tutorial GitHub template <https://github.com/readthedocs/tutorial-template/>`_,
-where you will see a green :guilabel:`Use this template` button.
-Click it to open a new page that will ask you for some details:
-
-* Leave the default "Owner", or change it to something better for a tutorial project.
-* Introduce an appropriate "Repository name", for example ``rtd-tutorial``.
-* Make sure the project is "Public", rather than "Private".
-
-After that, click on the green :guilabel:`Create repository from template` button,
-which will generate a new repository on your personal account
-(or the one of your choosing).
-This is the repository you will import on Read the Docs,
-and it contains the following files:
-
-``README.rst``
-  Basic description of the repository, you will leave it untouched.
-
-``pyproject.toml``
-  Python project metadata that makes it installable.
-  Useful for automatic documentation generation from sources.
-
-``lumache.py``
-  Source code of the fictional Python library.
-
-``docs/``
-  Directory holding all the Sphinx documentation sources,
-  including some required dependencies in ``docs/requirements.txt``,
-  the Sphinx configuration ``docs/source/conf.py``,
-  and the root document ``docs/source/index.rst`` written in reStructuredText.
-
-.. figure:: /_static/images/tutorial/github-template.png
-   :width: 80%
-   :align: center
-   :alt: GitHub template for the tutorial
-
-   GitHub template for the tutorial
-
-Sign up for Read the Docs
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To sign up for a Read the Docs account,
-navigate to the `Sign Up page <https://readthedocs.org/accounts/signup/>`_
-and choose the option :guilabel:`Sign up with GitHub`.
-On the authorization page, click the green :guilabel:`Authorize readthedocs` button.
-
-.. figure:: /_static/images/tutorial/github-authorization.png
-   :width: 60%
-   :align: center
-   :alt: GitHub authorization page
-
-   GitHub authorization page
-
-.. note::
-
-   Read the Docs needs elevated permissions to perform certain operations
-   that ensure that the workflow is as smooth as possible,
-   like installing webhooks.
-   If you want to learn more,
-   check out :ref:`connected-accounts:permissions for connected accounts`.
-
-After that, you will be redirected to Read the Docs,
-where you will need to confirm your e-mail and username.
-Clicking the :guilabel:`Sign Up »` button will create your account
-and redirect you to your :term:`dashboard`.
-
-By now, you should have two email notifications:
-
-* One from GitHub, telling you that "A third-party OAuth application ...
-  was recently authorized to access your account". You don't need to do
-  anything about it.
-* Another one from Read the Docs, prompting you to "verify your email
-  address". Click on the link to finalize the process.
-
-Finally, you created your account on Read the Docs
-and are ready to import your first project.
-
-Welcome!
-
-.. figure:: /_static/images/tutorial/rtd-empty-dashboard.png
-   :width: 80%
-   :align: center
-   :alt: Read the Docs empty dashboard
-
-   Read the Docs empty dashboard
-
-.. note::
-
-   Our commercial site offers some extra features,
-   like support for private projects.
-   You can learn more about :doc:`our two different sites </choosing-a-site>`.
-
-First steps
------------
-
-Importing the project to Read the Docs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To import your GitHub project to Read the Docs,
-first click on the :guilabel:`Import a Project` button on your dashboard
-(or browse to `the import page <https://readthedocs.org/dashboard/import/>`_ directly).
-You should see your GitHub account under the "Filter repositories" list on the right.
-If the list of repositories is empty, click the |:arrows_counterclockwise:| button,
-and after that all your repositories will appear on the center.
-
-.. figure:: /_static/images/tutorial/rtd-import-projects.gif
-   :width: 80%
-   :align: center
-   :alt: Import projects workflow
-
-   Import projects workflow
-
-Locate your ``rtd-tutorial`` project
-(possibly clicking :guilabel:`next ››` at the bottom if you have several pages of projects),
-and then click on the |:heavy_plus_sign:| button to the right of the name.
-The next page will ask you to fill some details about your Read the Docs project:
-
-Name
-  The name of the project. It has to be unique across all the service,
-  so it is better if you prepend your username,
-  for example ``{username}-rtd-tutorial``.
-
-Repository URL
-  The URL that contains the sources. Leave the automatically filled value.
-
-Repository type
-  Version control system used, leave it as "Git".
-
-Default branch
-  Name of the default branch of the project, leave it as ``main``.
-
-Edit advanced project options
-  Leave it unchecked, we will make some changes later.
-
-After hitting the :guilabel:`Next` button, you will be redirected to the :term:`project home`.
-You just created your first project on Read the Docs! |:tada:|
-
-.. figure:: /_static/images/tutorial/rtd-project-home.png
-   :width: 80%
-   :align: center
-   :alt: Project home
-
-   Project home
-
-Checking the first build
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Read the Docs will try to build the documentation of your project
-right after you create it.
-To see the build logs,
-click on the :guilabel:`Your documentation is building` link on the :term:`project home`,
-or alternatively navigate to the "Builds" page,
-then open the one on top (the most recent one).
-
-If the build has not finished yet by the time you open it,
-you will see a spinner next to a "Installing" or "Building" indicator,
-meaning that it is still in progress.
-
-.. figure:: /_static/images/tutorial/rtd-first-successful-build.png
-   :width: 80%
-   :align: center
-   :alt: First successful documentation build
-
-   First successful documentation build
-
-When the build finishes, you will see a green "Build completed" indicator,
-the completion date, the elapsed time,
-and a link to see the corresponding documentation.
-If you now click on :guilabel:`View docs`, you will see your documentation live!
-
-.. figure:: /_static/images/tutorial/rtd-first-light.png
-   :width: 80%
-   :align: center
-   :alt: HTML documentation live on Read the Docs
-
-   HTML documentation live on Read the Docs
-
-.. note::
-
-   Advertisement is one of our main sources of revenue.
-   If you want to learn more about how do we fund our operations
-   and explore options to go ad-free,
-   check out our `Sustainability page <https://readthedocs.org/sustainability/>`_.
-
-   If you don't see the ad, you might be using an ad blocker.
-   Our EthicalAds network respects your privacy, doesn't target you,
-   and tries to be as unobstrusive as possible,
-   so we would like to kindly ask you to :doc:`not block us </advertising/ad-blocking>` |:heart:|
-
-Basic configuration changes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can now proceed to make some basic configuration adjustments.
-Navigate back to the :term:`project page`
-and click on the :guilabel:`⚙ Admin` button, which will open the Settings page.
-
-First of all, add the following text in the description:
-
-    Lumache (/lu'make/) is a Python library for cooks and food lovers
-    that creates recipes mixing random ingredients.
-
-Then set the project homepage to ``https://world.openfoodfacts.org/``,
-and write ``food, python`` in the list of tags.
-All this information will be shown on your project home.
-
-After that, configure your email so you get a notification if the build fails.
-To do so, click on the :guilabel:`Notifications` link on the left,
-type the email where you would like to get the notification,
-and click the :guilabel:`Add` button.
-After that, your email will be shown under "Existing Notifications".
-
-Trigger a build from a pull request
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Read the Docs allows you to :doc:`trigger builds from GitHub pull requests </pull-requests>`
-and gives you a preview of how the documentation would look like with those changes.
-
-To enable that functionality, first click on the :guilabel:`Advanced Settings` link on the left
-under the :guilabel:`⚙ Admin` menu, check the "Build pull requests for this project" checkbox,
-and click the :guilabel:`Save` button at the bottom of the page.
-
-Next, navigate to your GitHub repository, locate the file ``docs/source/index.rst``,
-and click on the |:pencil2:| icon on the top-right with the tooltip "Edit this file"
-to open a web editor (more information `on their documentation`__).
-
-__  https://docs.github.com/en/github/managing-files-in-a-repository/managing-files-on-github/editing-files-in-your-repository
-
-.. figure:: /_static/images/tutorial/gh-edit.png
-   :width: 80%
-   :align: center
-   :alt: File view on GitHub before launching the editor
-
-   File view on GitHub before launching the editor
-
-In the editor, add the following sentence to the file:
-
-.. code-block:: rst
-   :caption: docs/source/index.rst
-
-   Lumache has its documentation hosted on Read the Docs.
-
-Write an appropriate commit message,
-and choose the "Create a **new branch** for this commit and start a pull request" option,
-typing a name for the new branch.
-When you are done, click the green :guilabel:`Propose changes` button,
-which will take you to the new pull request page,
-and there click the :guilabel:`Create pull request` button below the description.
-
-.. figure:: /_static/images/tutorial/gh-pr-build.png
-   :width: 80%
-   :align: center
-   :alt: Read the Docs building the pull request from GitHub
-
-   Read the Docs building the pull request from GitHub
-
-After opening the pull request, a Read the Docs check will appear
-indicating that it is building the documentation for that pull request.
-If you click on the :guilabel:`Details` link while it is building,
-you will access the build logs,
-otherwise it will take you directly to the documentation.
-When you are satisfied, you can merge the pull request!
-
-Customizing the build process
------------------------------
-
-The Settings page of the :term:`project home` allows you
-to change some *global* configuration values of your project.
-In addition, you can further customize the building process
-using the ``.readthedocs.yaml`` :doc:`configuration file </config-file/v2>`.
-This has several advantages:
-
-- The configuration lives next to your code and documentation, tracked by version control.
-- It can be different for every version (more on versioning in the next section).
-- Some configurations are only available using the config file.
-
-Read the Docs works without this configuration
-by :ref:`making some decisions on your behalf <build-default-versions:Default versions of dependencies>`.
-For example, what Python version to use, how to install the requirements, and others.
-
-.. tip::
-
-   Settings that apply to the entire project are controlled in the web dashboard,
-   while settings that are version or build specific are better in the YAML file.
-
-Upgrading the Python version
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-For example, to explicitly use Python 3.8 to build your project,
-navigate to your GitHub repository, click on the :guilabel:`Add file` button,
-and add a ``.readthedocs.yaml`` file with these contents to the root of your project:
+Configuration File V2
+=====================
+
+Read the Docs supports configuring your documentation builds with a YAML file.
+The :doc:`configuration file <index>` must be in the root directory of your project
+and be named ``.readthedocs.yaml``.
+
+All options are applied to the version containing this file.
+Below is an example YAML file which shows the most common configuration options:
+
+.. tabs::
+
+   .. tab:: Sphinx
+
+      .. code:: yaml
+         # .readthedocs.yaml
+         # Read the Docs configuration file
+         # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+         # Required
+         version: 2
+         # Set the version of Python and other tools you might need
+         build:
+           os: ubuntu-20.04
+           tools:
+             python: "3.9"
+             # You can also specify other tool versions:
+             # nodejs: "16"
+             # rust: "1.55"
+             # golang: "1.17"
+         # Build documentation in the docs/ directory with Sphinx
+         sphinx:
+            configuration: docs/conf.py
+         # If using Sphinx, optionally build your docs in additional formats such as PDF
+         # formats:
+         #    - pdf
+         # Optionally declare the Python requirements required to build your docs
+         python:
+            install:
+            - requirements: docs/requirements.txt
+   .. tab:: MkDocs
+
+      .. code:: yaml
+         # .readthedocs.yaml
+         # Read the Docs configuration file
+         # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+         # Required
+         version: 2
+         # Set the version of Python and other tools you might need
+         build:
+           os: ubuntu-20.04
+           tools:
+             python: "3.9"
+         mkdocs:
+           configuration: mkdocs.yml
+         # Optionally declare the Python requirements required to build your docs
+         python:
+            install:
+            - requirements: docs/requirements.txt
+Supported settings
+------------------
+
+Read the Docs validates every configuration file.
+Any configuration option that isn't supported will make the build fail.
+This is to avoid typos and provide feedback on invalid configurations.
+
+.. warning::
+
+   When using a v2 configuration file,
+   the local settings from the web interface are ignored.
+
+.. contents::
+   :local:
+   :depth: 3
+
+version
+~~~~~~~
+
+:Required: ``true``
+
+Example:
 
 .. code-block:: yaml
-   :caption: .readthedocs.yaml
-
    version: 2
+.. warning::
 
-   build:
-     os: "ubuntu-20.04"
-     tools:
-       python: "3.8"
+   If you don't provide the version, :doc:`v1 <v1>` will be used.
 
-The purpose of each key is:
+formats
+~~~~~~~
 
-``version``
-  Mandatory, specifies :doc:`version 2 of the configuration file </config-file/v2>`.
+Additional formats of the documentation to be built,
+apart from the default HTML.
 
-``build.os``
-  Required to specify the Python version,
-  :ref:`states the name of the base image <config-file/v2:build.os>`.
+:Type: ``list``
+:Options: ``htmlzip``, ``pdf``, ``epub``, ``all``
+:Default: ``[]``
 
-``build.tools.python``
-  Declares the Python version to be used.
-
-After you commit these changes, go back to your project home,
-navigate to the "Builds" page, and open the new build that just started.
-You will notice that one of the lines contains ``python3.8``:
-if you click on it, you will see the full output of the corresponding command,
-stating that it used Python 3.8.6 to create the virtual environment.
-
-.. figure:: /_static/images/tutorial/build-python3.8.png
-   :width: 80%
-   :align: center
-   :alt: Read the Docs build using Python 3.8
-
-   Read the Docs build using Python 3.8
-
-Making warnings more visible
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you navigate to your HTML documentation,
-you will notice that the index page looks correct,
-but actually the API section is empty.
-This is a very common issue with Sphinx,
-and the reason is stated in the build logs.
-On the build page you opened before,
-click on the :guilabel:`View raw` link on the top right,
-which opens the build logs in plain text,
-and you will see several warnings:
-
-.. code-block:: text
-
-   WARNING: [autosummary] failed to import 'lumache': no module named lumache
-   ...
-   WARNING: autodoc: failed to import function 'get_random_ingredients' from module 'lumache'; the following exception was raised:
-   No module named 'lumache'
-   WARNING: autodoc: failed to import exception 'InvalidKindError' from module 'lumache'; the following exception was raised:
-   No module named 'lumache'
-
-To spot these warnings more easily and allow you to address them,
-you can add the ``sphinx.fail_on_warning`` option to your Read the Docs configuration file.
-For that, navigate to GitHub, locate the ``.readthedocs.yaml`` file you created earlier,
-click on the |:pencil2:| icon, and add these contents:
+Example:
 
 .. code-block:: yaml
-   :caption: .readthedocs.yaml
-   :emphasize-lines: 8-9
-
    version: 2
+   # Default
+   formats: []
+.. code-block:: yaml
+   version: 2
+   # Build PDF & ePub
+   formats:
+     - epub
+     - pdf
+.. note::
 
-   build:
-     os: "ubuntu-20.04"
-     tools:
-       python: "3.8"
+   You can use the ``all`` keyword to indicate all formats.
 
-   sphinx:
-     fail_on_warning: true
+   .. code-block:: yaml
+      version: 2
+      # Build all formats
+      formats: all
+.. warning::
 
-At this point, if you navigate back to your "Builds" page,
-you will see a ``Failed`` build, which is exactly the intended result:
-the Sphinx project is not properly configured yet,
-and instead of rendering an empty API page, now the build fails.
+   At the moment, only Sphinx supports additional formats.
+   ``pdf``, ``epub``, and ``htmlzip`` output is not yet supported when using MkDocs.
 
-The reason :py:mod:`sphinx:sphinx.ext.autosummary` and :py:mod:`sphinx:sphinx.ext.autodoc`
-fail to import the code is because it is not installed.
-Luckily, the ``.readthedocs.yaml`` also allows you to specify
-which requirements to install.
+python
+~~~~~~
 
-To install the library code of your project,
-go back to editing ``.readthedocs.yaml`` on GitHub and modify it as follows:
+Configuration of the Python environment to be used.
 
 .. code-block:: yaml
-   :caption: .readthedocs.yaml
-   :emphasize-lines: 2-4
-
+   version: 2
    python:
-     # Install our python package before building the docs
+     install:
+       - requirements: docs/requirements.txt
+       - method: pip
+         path: .
+         extra_requirements:
+           - docs
+       - method: setuptools
+         path: another/package
+     system_packages: true
+python.version
+``````````````
+
+.. warning::
+
+   This option is now deprecated
+   and replaced by :ref:`config-file/v2:build.tools.python`.
+   See :ref:`config-file/v2:python.version (legacy)`
+   for the description of this option.
+
+python.install
+``````````````
+
+List of installation methods of packages and requirements.
+You can have several of the following methods.
+
+:Type: ``list``
+:Default: ``[]``
+
+Requirements file
+'''''''''''''''''
+
+Install packages from a requirements file.
+
+The path to the requirements file, relative to the root of the project.
+
+:Key: ``requirements``
+:Type: ``path``
+:Required: ``true``
+
+Example:
+
+.. code-block:: yaml
+   version: 2
+   python:
+     version: "3.7"
+     install:
+       - requirements: docs/requirements.txt
+       - requirements: requirements.txt
+.. warning::
+
+  If you are using a :ref:`Conda <config-file/v2:conda>` environment to
+  manage the build, this setting will not have any effect. Instead
+  add the extra requirements to the ``environment`` file of Conda.
+
+Packages
+''''''''
+
+Install the project using ``python setup.py install`` or ``pip install``.
+
+The path to the package, relative to the root of the project.
+
+:Key: ``path``
+:Type: ``path``
+:Required: ``true``
+
+The installation method.
+
+:Key: ``method``
+:Options: ``pip``, ``setuptools``
+:Default: ``pip``
+
+`Extra requirements`_ section to install in addition to the `package dependencies`_.
+
+.. _Extra Requirements: https://setuptools.readthedocs.io/en/latest/userguide/dependency_management.html#optional-dependencies
+.. _package dependencies: https://setuptools.readthedocs.io/en/latest/userguide/dependency_management.html#declaring-required-dependency
+
+.. warning::
+
+   You need to install your project with ``pip`` to use ``extra_requirements``.
+
+:Key: ``extra_requirements``
+:Type: ``list``
+:Default: ``[]``
+
+Example:
+
+.. code-block:: yaml
+   version: 2
+   python:
+     version: "3.7"
      install:
        - method: pip
          path: .
+         extra_requirements:
+           - docs
+       - method: setuptools
+         path: package
+With the previous settings, Read the Docs will execute the next commands:
 
-With this change, Read the Docs will install the Python code
-before starting the Sphinx build, which will finish seamlessly.
-If you go now to the API page of your HTML documentation,
-you will see the ``lumache`` summary!
+.. prompt:: bash $
 
-Enabling PDF and EPUB builds
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   pip install .[docs]
+   python package/setup.py install
 
-Sphinx can build several other formats in addition to HTML, such as PDF and EPUB.
-You might want to enable these formats for your project
-so your users can read the documentation offline.
+python.system_packages
+``````````````````````
 
-To do so, add this extra content to your ``.readthedocs.yaml``:
+Give the virtual environment access to the global site-packages directory.
+
+:Type: ``bool``
+:Default: ``false``
+
+.. warning::
+
+  If you are using a :ref:`Conda <config-file/v2:conda>` environment
+  to manage the build, this setting will not have any effect, since
+  the virtual environment creation is managed by Conda.
+
+conda
+~~~~~
+
+Configuration for Conda support.
 
 .. code-block:: yaml
-   :caption: .readthedocs.yaml
-   :emphasize-lines: 4-6
+   version: 2
+   conda:
+     environment: environment.yml
+conda.environment
+`````````````````
 
+The path to the Conda environment file, relative to the root of the project.
+
+:Type: ``path``
+:Required: ``true``
+
+build
+~~~~~
+
+Configuration for the documentation build process.
+This allows you to specify the base Read the Docs image
+used to build the documentation,
+and control the versions of several tools:
+Python, Node.js, Rust, and Go.
+
+.. code-block:: yaml
+   version: 2
+   build:
+     os: ubuntu-20.04
+     tools:
+       python: "3.9"
+       nodejs: "16"
+       rust: "1.55"
+       golang: "1.17"
+build.os
+````````
+
+The Docker image used for building the docs.
+Image names refer to the operating system Read the Docs uses to build them.
+
+.. note::
+
+   Arbitrary Docker images are not supported.
+
+:Type: ``string``
+:Options: ``ubuntu-20.04``, ``ubuntu-22.04``
+:Required: ``true``
+
+build.tools
+```````````
+
+Version specifiers for each tool. It must contain at least one tool.
+
+:Type: ``dict``
+:Options: ``python``, ``nodejs``, ``rust``, ``golang``
+:Required: ``true``
+
+build.tools.python
+``````````````````
+
+Python version to use.
+You can use several interpreters and versions, from CPython, PyPy, Miniconda, and Mamba.
+
+.. note::
+
+   If you use Miniconda3 or Mambaforge, you can select the Python version
+   using the ``environment.yml`` file. See our :doc:`/guides/conda` guide
+   for more information.
+
+:Type: ``string``
+:Options:
+  - ``2.7``
+  - ``3`` (last stable CPython version)
+  - ``3.6``
+  - ``3.7``
+  - ``3.8``
+  - ``3.9``
+  - ``3.10``
+  - ``3.11``
+  - ``pypy3.7``
+  - ``pypy3.8``
+  - ``pypy3.9``
+  - ``miniconda3-4.7``
+  - ``mambaforge-4.10``
+
+build.tools.nodejs
+``````````````````
+
+Node.js version to use.
+
+:Type: ``string``
+:Options:
+   - ``14``
+   - ``16``
+   - ``18``
+
+build.tools.rust
+````````````````
+
+Rust version to use.
+
+:Type: ``string``
+:Options:
+   - ``1.55``
+   - ``1.61``
+
+build.tools.golang
+``````````````````
+
+Go version to use.
+
+:Type: ``string``
+:Options:
+   - ``1.17``
+   - ``1.18``
+
+build.apt_packages
+``````````````````
+
+List of `APT packages`_ to install.
+Our build servers run Ubuntu 18.04, with the default set of package repositories installed.
+We don't currently support PPA's or other custom repositories.
+
+.. _APT packages: https://packages.ubuntu.com/
+
+:Type: ``list``
+:Default: ``[]``
+
+.. code-block:: yaml
+   version: 2
+   build:
+     apt_packages:
+       - libclang
+       - cmake
+.. note::
+
+   When possible avoid installing Python packages using apt (``python3-numpy`` for example),
+   :ref:`use pip or Conda instead <guides/reproducible-builds:pinning dependencies>`.
+
+
+build.jobs
+``````````
+
+Commands to be run before or after a Read the Docs :term:`pre-defined build jobs`.
+This allows you to run custom commands at a particular moment in the build process.
+See :doc:`/build-customization` for more details.
+
+
+.. code-block:: yaml
+   version: 2
+   build:
+     os: ubuntu-22.04
+     tools:
+       python: "3.10"
+     jobs:
+       pre_create_environment:
+         - echo "Command run at 'pre_create_environment' step"
+       post_build:
+         - echo "Command run at 'post_build' step"
+         - echo `date`
+.. note::
+
+   Each key under ``build.jobs`` must be a list of strings.
+   ``build.os`` and ``build.tools`` are also required to use ``build.jobs``.
+
+
+:Type: ``dict``
+:Allowed keys: ``post_checkout``, ``pre_system_dependencies``, ``post_system_dependencies``,
+   ``pre_create_environment``, ``post_create_environment``, ``pre_install``, ``post_install``,
+   ``pre_build``, ``post_build``
+:Required: ``false``
+:Default: ``{}``
+
+
+build.commands
+``````````````
+
+Specify a list of commands that Read the Docs will run on the build process.
+When ``build.commands`` is used, none of the :term:`pre-defined build jobs` will be executed.
+(see :doc:`/build-customization` for more details).
+This allows you to run custom commands and control the build process completely.
+The ``_readthedocs/html`` directory (relative to the checkout's path) will be uploaded and hosted by Read the Docs.
+
+.. warning::
+
+   This feature is in a *beta phase* and could suffer incompatible changes or even removed completely in the near feature.
+   It does not yet support some of the Read the Docs' integrations like the :term:`flyout menu`, search and ads.
+   However, integrating all of them is part of the plan.
+   Use it under your own responsibility.
+
+.. code-block:: yaml
+   version: 2
+   build:
+     os: ubuntu-22.04
+     tools:
+       python: "3.10"
+     commands:
+       - pip install pelican
+       - pelican --settings docs/pelicanconf.py --output _readthedocs/html/ docs/
+.. note::
+
+   ``build.os`` and ``build.tools`` are also required when using ``build.commands``.
+
+:Type: ``list``
+:Required: ``false``
+:Default: ``[]``
+
+
+sphinx
+~~~~~~
+
+Configuration for Sphinx documentation
+(this is the default documentation type).
+
+.. code-block:: yaml
+   version: 2
    sphinx:
+     builder: html
+     configuration: conf.py
      fail_on_warning: true
+.. note::
+   If you want to pin Sphinx to a specific version,
+   use a ``requirements.txt`` or ``environment.yml`` file
+   (see :ref:`config-file/v2:requirements file` and  :ref:`config-file/v2:conda.environment`).
+   If you are using a metadata file to describe code dependencies
+   like ``setup.py``, ``pyproject.toml``, or similar,
+   you can use the ``extra_requirements`` option
+   (see :ref:`config-file/v2:packages`).
+   This also allows you to override :ref:`the default pinning done by Read the Docs
+   if your project was created before October 2020 <build-default-versions:external dependencies>`.
 
-   formats:
-     - pdf
-     - epub
+sphinx.builder
+``````````````
 
-After this change, PDF and EPUB downloads will be available
-both from the "Downloads" section of the :term:`project home`,
-as well as the :term:`flyout menu`.
+The builder type for the Sphinx documentation.
 
-.. figure:: /_static/images/tutorial/flyout-downloads.png
-   :align: center
-   :alt: Downloads available from the flyout menu
+:Type: ``string``
+:Options: ``html``, ``dirhtml``, ``singlehtml``
+:Default: ``html``
 
-   Downloads available from the flyout menu
+.. note::
+   The ``htmldir`` builder option was renamed to ``dirhtml`` to use the same name as sphinx.
+   Configurations using the old name will continue working.
 
-Versioning documentation
-------------------------
+sphinx.configuration
+````````````````````
 
-Read the Docs allows you to have :doc:`several versions of your documentation </versions>`,
-in the same way that you have several versions of your code.
-By default, it creates a ``latest`` version
-that points to the default branch of your version control system
-(``main`` in the case of this tutorial),
-and that's why the URLs of your HTML documentation contain the string ``/latest/``.
+The path to the ``conf.py`` file, relative to the root of the project.
 
-Creating a new version
-~~~~~~~~~~~~~~~~~~~~~~
+:Type: ``path``
+:Default: ``null``
 
-Let's say you want to create a ``1.0`` version of your code,
-with a corresponding ``1.0`` version of the documentation.
-For that, first navigate to your GitHub repository, click on the branch selector,
-type ``1.0.x``, and click on "Create branch: 1.0.x from 'main'"
-(more information `on their documentation`__).
+If the value is ``null``,
+Read the Docs will try to find a ``conf.py`` file in your project.
 
-__ https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository
+sphinx.fail_on_warning
+``````````````````````
 
-Next, go to your :term:`project home`, click on the :guilabel:`Versions` button,
-and under "Active Versions" you will see two entries:
+Turn warnings into errors
+(:option:`-W <sphinx:sphinx-build.-W>` and :option:`--keep-going <sphinx:sphinx-build.--keep-going>` options).
+This means the build fails if there is a warning and exits with exit status 1.
 
-- The ``latest`` version, pointing to the ``main`` branch.
-- A new ``stable`` version, pointing to the ``origin/1.0.x`` branch.
+:Type: ``bool``
+:Default: ``false``
 
-.. figure:: /_static/images/tutorial/active-versions.png
-   :width: 80%
-   :align: center
-   :alt: List of active versions of the project
+mkdocs
+~~~~~~
 
-   List of active versions of the project
+Configuration for MkDocs documentation.
 
-Right after you created your branch,
-Read the Docs created a new special version called ``stable`` pointing to it,
-and started building it. When the build finishes,
-the ``stable`` version will be listed in the :term:`flyout menu`
-and your readers will be able to choose it.
+.. code-block:: yaml
+   version: 2
+   mkdocs:
+     configuration: mkdocs.yml
+     fail_on_warning: false
+.. note::
+   If you want to pin MkDocs to a specific version,
+   use a ``requirements.txt`` or ``environment.yml`` file
+   (see :ref:`config-file/v2:requirements file` and  :ref:`config-file/v2:conda.environment`).
+   If you are using a metadata file to describe code dependencies
+   like ``setup.py``, ``pyproject.toml``, or similar,
+   you can use the ``extra_requirements`` option
+   (see :ref:`config-file/v2:packages`).
+   This also allows you to override :ref:`the default pinning done by Read the Docs
+   if your project was created before March 2021 <build-default-versions:external dependencies>`.
+
+mkdocs.configuration
+````````````````````
+
+The path to the ``mkdocs.yml`` file, relative to the root of the project.
+
+:Type: ``path``
+:Default: ``null``
+
+If the value is ``null``,
+Read the Docs will try to find a ``mkdocs.yml`` file in your project.
+
+mkdocs.fail_on_warning
+``````````````````````
+
+`Turn warnings into errors <https://www.mkdocs.org/user-guide/configuration/#strict>`__.
+This means that the build stops at the first warning and exits with exit status 1.
+
+:Type: ``bool``
+:Default: ``false``
+
+submodules
+~~~~~~~~~~
+
+VCS submodules configuration.
 
 .. note::
 
-   Read the Docs :ref:`follows some rules <versions:how we envision versions working>`
-   to decide whether to create a ``stable`` version pointing to your new branch or tag.
-   To simplify, it will check if the name resembles a version number
-   like ``1.0``, ``2.0.3`` or ``4.x``.
+   Only Git is supported at the moment.
 
-Now you might want to set ``stable`` as the *default version*,
-rather than ``latest``,
-so that users see the ``stable`` documentation
-when they visit the :term:`root URL` of your documentation
-(while still being able to change the version in the flyout menu).
+.. warning::
 
-For that, go to the :guilabel:`Advanced Settings` link
-under the :guilabel:`⚙ Admin` menu of your project home,
-choose ``stable`` in the "Default version*" dropdown,
-and hit :guilabel:`Save` at the bottom.
-Done!
+   You can't use ``include`` and ``exclude`` settings for submodules at the same time.
 
-Modifying versions
-~~~~~~~~~~~~~~~~~~
+.. code-block:: yaml
+   version: 2
+   submodules:
+     include:
+       - one
+       - two
+     recursive: true
+submodules.include
+``````````````````
 
-Both ``latest`` and ``stable`` are now *active*, which means that
-they are visible for users, and new builds can be triggered for them.
-In addition to these, Read the Docs also created an *inactive* ``1.0.x``
-version, which will always point to the ``1.0.x`` branch of your repository.
+List of submodules to be included.
 
-.. figure:: /_static/images/tutorial/inactive-versions.png
-   :width: 80%
-   :align: center
-   :alt: List of inactive versions of the project
-
-   List of inactive versions of the project
-
-Let's activate the ``1.0.x`` version.
-For that, go to the "Versions" on your :term:`project home`,
-locate ``1.0.x`` under "Activate a version",
-and click on the :guilabel:`Activate` button.
-This will take you to a new page with two checkboxes,
-"Active" and "Hidden". Check only "Active",
-and click :guilabel:`Save`.
-
-After you do this, ``1.0.x`` will appear on the "Active Versions" section,
-and a new build will be triggered for it.
+:Type: ``list``
+:Default: ``[]``
 
 .. note::
 
-   You can read more about :ref:`hidden versions <versions:hidden>`
-   in our documentation.
+   You can use the ``all`` keyword to include all submodules.
 
-Show a warning for old versions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   .. code-block:: yaml
+      version: 2
+      submodules:
+        include: all
+submodules.exclude
+``````````````````
 
-When your project matures, the number of versions might increase.
-Sometimes you will want to warn your readers
-when they are browsing an old or outdated version of your documentation.
+List of submodules to be excluded.
 
-To showcase how to do that, let's create a ``2.0`` version of the code:
-navigate to your GitHub repository, click on the branch selector,
-type ``2.0.x``, and click on "Create branch: 2.0.x from 'main'".
-This will trigger two things:
-
-- Since ``2.0.x`` is your newest branch, ``stable`` will switch to tracking it.
-- A new ``2.0.x`` version will be created on your Read the Docs project.
-- Since you already have an active ``stable`` version, ``2.0.x`` will be activated.
-
-From this point, ``1.0.x`` version is no longer the most up to date one.
-To display a warning to your readers, go to the :guilabel:`⚙ Admin` menu of your project home,
-click on the :guilabel:`Advanced Settings` link on the left,
-enable the "Show version warning" checkbox, and click the :guilabel:`Save` button.
-
-If you now browse the ``1.0.x`` documentation, you will see a warning on top
-encouraging you to browse the latest version instead. Neat!
-
-.. figure:: /_static/images/tutorial/old-version-warning.png
-   :width: 80%
-   :align: center
-   :alt: Warning for old versions
-
-   Warning for old versions
-
-Getting insights from your projects
------------------------------------
-
-Once your project is up and running, you will probably want to understand
-how readers are using your documentation, addressing some common questions like:
-
-- what pages are the most visited pages?
-- what search terms are the most frequently used?
-- are readers finding what they look for?
-
-Read the Docs offers you some analytics tools to find out the answers.
-
-Browsing Traffic Analytics
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The :doc:`/analytics` view shows the top viewed documentation pages of the past 30 days,
-plus a visualization of the daily views during that period.
-To generate some artificial views on your newly created project,
-you can first click around the different pages of your project,
-which will be accounted immediately for the current day statistics.
-
-To see the Traffic Analytics view, go back the :term:`project page` again,
-click on the :guilabel:`⚙ Admin` button,
-and then click on the :guilabel:`Traffic Analytics` section.
-You will see the list of pages in descending order of visits,
-as well as a plot similar to the one below.
-
-.. figure:: /_static/images/tutorial/traffic-analytics-plot.png
-   :width: 80%
-   :align: center
-   :alt: Traffic Analytics plot
-
-   Traffic Analytics plot
+:Type: ``list``
+:Default: ``[]``
 
 .. note::
 
-   The Traffic Analytics view explained above gives you a simple overview
-   of how your readers browse your documentation. It has the advantage that
-   it stores no identifying information about your visitors,
-   and therefore it respects their privacy.
-   However, you might want to get more detailed data by
-   :ref:`enabling Google Analytics <analytics:Enabling Google Analytics on your Project>`.
-   Notice though that we take some extra measures to :ref:`respect user
-   privacy <advertising/advertising-details:analytics>`
-   when they visit projects that have Google Analytics enabled,
-   and this might reduce the number of visits counted.
+   You can use the ``all`` keyword to exclude all submodules.
+   This is the same as ``include: []``.
 
-Finally, you can also download this data for closer inspection.
-To do that, scroll to the bottom of the page
-and click on the :guilabel:`Download all data` button.
-That will prompt you to download a :abbr:`CSV (Comma-Separated Values)` file
-that you can process any way you want.
+   .. code-block:: yaml
+      version: 2
+      submodules:
+        exclude: all
+submodules.recursive
+````````````````````
 
-Browsing Search Analytics
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Do a recursive clone of the submodules.
 
-Apart from traffic analytics, Read the Docs also offers the possibility
-to inspect :ref:`what search terms your readers use <server-side-search:Search Analytics>`
-on your documentation.
-This can inform decisions on what areas to reinforce,
-or what parts of your project are less understood or more difficult to find.
+:Type: ``bool``
+:Default: ``false``
 
-To generate some artificial search statistics on the project,
-go to the HTML documentation, locate the Sphinx search box on the left,
-type ``ingredients``, and press the :kbd:`Enter` key.
-You will be redirected to the search results page, which will show two entries.
+.. note::
 
-Next, go back to the :guilabel:`⚙ Admin` section of your project page,
-and then click on the :guilabel:`Search Analytics` section.
-You will see a table with the most searched queries
-(including the ``ingredients`` one you just typed),
-how many results did each query return, and how many times it was searched.
-Below the queries table, you will also see a visualization
-of the daily number of search queries during the past 30 days.
+   This is ignored if there aren't submodules to clone.
 
-.. figure:: /_static/images/tutorial/search-analytics-terms.png
-   :width: 80%
-   :align: center
-   :alt: Most searched terms
+search
+~~~~~~
 
-   Most searched terms
+Settings for more control over :doc:`/server-side-search`.
 
-Like the Traffic Analytics, you can also download the whole dataset in CSV format
-by clicking on the :guilabel:`Download all data` button.
+.. code-block:: yaml
+   version: 2
+   search:
+     ranking:
+       api/v1/*: -1
+       api/v2/*: 4
+     ignore:
+       - 404.html
+search.ranking
+``````````````
 
-Where to go from here
----------------------
+Set a custom search rank over pages matching a pattern.
 
-This is the end of the tutorial. You started by forking a GitHub repository
-and importing it on Read the Docs, building its HTML documentation,
-and then went through a series of steps to customize the build process,
-tweak the project configuration, and add new versions.
+:Type: ``map`` of patterns to ranks
+:Default: ``{}``
 
-Here you have some resources to continue learning about documentation
-and Read the Docs:
+Patterns are matched against the final html pages produced by the build
+(you should try to match `index.html`, not `docs/index.rst`).
+Patterns can include some special characters:
 
-- You can learn more about the functionality of the platform
-  by going over our :doc:`/features` page.
-- To make the most of the documentation generators that are supported,
-  you can read the :doc:`Sphinx tutorial <sphinx:tutorial/index>`
-  or the `MkDocs User Guide <https://www.mkdocs.org/user-guide/>`_.
-- Display example projects and read the source code in :doc:`/examples`.
-- Whether you are a documentation author, a project administrator, a developer, or a designer,
-  you can follow our how-to guides that cover specific tasks,
-  available under :doc:`/guides/index`.
-- You can check out some of the
-  :ref:`index:Advanced features of Read the Docs`,
-  like :doc:`/subprojects` or :doc:`/automation-rules`, to name a few.
-- For private project support and other enterprise features,
-  you can use :doc:`our commercial service </commercial/index>`
-  (and if in doubt, check out :doc:`/choosing-a-site`).
-- Do you want to join a global community of fellow `documentarians <writethedocs:documentarians>`?
-  Check out `Write the Docs <https://www.writethedocs.org/>`_ and
-  :doc:`its Slack workspace <writethedocs:slack>`.
-- Do you want to contribute to Read the Docs?
-  We greatly appreciate it! Check out :doc:`rtd-dev:contribute`.
+- ``*`` matches everything
+- ``?`` matches any single character
+- ``[seq]`` matches any character in ``seq``
 
-Happy documenting!
+The rank can be an integer number between -10 and 10 (inclusive).
+Pages with a rank closer to -10 will appear further down the list of results,
+and pages with a rank closer to 10 will appear higher in the list of results.
+Note that 0 means *normal rank*, not *no rank*.
 
-Product Brief
-wissem boughammoura
-Dernière mise à jour :
-Hier at 10:10
-Negation of Condition simple : NOT "a=10" ( a!=0) 
-using default Q operator
->>> ~Q('a=10')
-<Q: (NOT (AND: a=10))>
+If you are looking to completely ignore a page,
+check :ref:`config-file/v2:search.ignore`.
 
-using my Q_kwargs
------using dictionary-----
->>> Q_kwargs({'~a': 10})
-<Q: (NOT (AND: ('a', 10)))>
->>> Q_kwargs({'a': 10},{'negation':True})
-<Q: (NOT (AND: ('a', 10)))>https://web.postman.co/request/10715584-2253d227-1037-4e86-829a-1e3efddba95a
------using list-----
->>> Q_kwargs([{'~a': 10}])
-<Q: (NOT (AND: ('a', 10)))>
------using str-----
->>> Q_kwargs('(~a=10)')
-<Q: (NOT (AND: ('a', '10')))>
->>> Q_kwargs('(*a=10)')
-<Q: (NOT (AND: ('a', '10')))>
+.. code-block:: yaml
+   version: 2
+   search:
+     ranking:
+       # Match a single file
+       tutorial.html: 2
+       # Match all files under the api/v1 directory
+       api/v1/*: -5
+       # Match all files that end with tutorial.html
+       '*/tutorial.html': 3
+.. note::
 
-*****************************************************************
-Or of 2 Conditions :  "a=1 OR b=2" (a=1|b=2) using default Q operator
->>> Q({'a': 1})|Q({'b': 1})
-<Q: (OR: {'a': 1}, {'b': 1})>
->>> ~(~Q({'a': 1})&~Q({'b': 1}))
-<Q: (NOT (AND: (NOT (AND: {'a': 1})), (NOT (AND: {'b': 1}))))>
-using or_ in "operator" module  and Q operator
-import operator
->>> operator.or_(*[Q({'a': 1}),Q({'b': 1})])
-<Q: (OR: {'a': 1}, {'b': 1})>
->>> operator.or_(Q({'a': 1}),Q({'b': 1}))
-<Q: (OR: {'a': 1}, {'b': 1})>
-using my Q_kwargs
------using dictionary with default option {'logic_and':True}-----
->>> Q_kwargs({'a': 10,'b':20})
-<Q: (OR: ('a', 10), ('b', 20))>
->>> Q_kwargs({'a': 10,'b':20},{'logic_and':True})
-<Q: (OR: ('a', 10), ('b', 20))>
->>> ~Q_kwargs({'~a': 10,'~b':20},{'logic_and':False})
-<Q: (NOT (AND: (NOT (AND: ('a', 10))), (NOT (AND: ('b', 20)))))>
------using list-----
->>> Q_kwargs([{'a': 10,'b':20}])
-<Q: (OR: ('a', 10), ('b', 20))>
->>> Q_kwargs([{'a': 10,'b':20}],{'logic_and':True})
-<Q: (OR: ('a', 10), ('b', 20))>
->>> Q_kwargs([{'~a': 10,'~b':20}],{'logic_and':True,'negation':True})
-<Q: (NOT (AND: (OR: (NOT (AND: ('a', 10))), (NOT (AND: ('b', 20))))))>
------using str-----
->>> Q_kwargs('(a=10|b=20)')
-<Q: (OR: ('a', '10'), ('b', '20'))>
->>> Q_kwargs('(*(~a=10&~b=20))')
-<Q: (NOT (AND: (NOT (AND: (NOT (AND: ('a', '10'))), (NOT (AND: ('b', '20')))))))>
+   The final rank will be the last pattern to match the page.
 
-*****************************************************************
-AND of 2 Conditions :  "a=1 AND b=2" (a=1&b=2) *******
-*****************************************************************
+.. tip::
 
-using default Q operator
+   Is better to decrease the rank of pages you want to deprecate,
+   rather than increasing the rank of the other pages.
 
->>> Q({'a': 1})&Q({'b': 1})
-<Q: (AND: {'a': 1}, {'b': 1})>
->>> Q({'a': 1},{'b': 1})
-<Q: (AND: {'a': 1}, {'b': 1})>
->>> Q(*[{'a': 1},{'b': 1}])
-<Q: (AND: {'a': 1}, {'b': 1})>
->>> ~(~Q({'a': 1})|~Q({'b': 1}))
-<Q: (NOT (AND: (OR: (NOT (AND: {'a': 1})), (NOT (AND: {'b': 1})))))>
+search.ignore
+`````````````
 
-using or_ in "operator" module  and Q operator
+Don't index files matching a pattern.
+This is, you won't see search results from these files.
 
->>> import operator
->>> operator.and_(Q({'a': 1}),Q({'b': 1}))
-<Q: (AND: {'a': 1}, {'b': 1})>
->>> operator.and_(*[Q({'a': 1}),Q({'b': 1})])
-<Q: (AND: {'a': 1}, {'b': 1})>
+:Type: ``list`` of patterns
+:Default: ``['search.html', 'search/index.html', '404.html', '404/index.html']``
 
-using my Q_kwargs
------using dictionary with option {'logic_and':False}-----
->>> Q_kwargs({'a': 10,'b':20},{'logic_and':False})
-<Q: (AND: ('a', 10), ('b', 20))>
->>> ~Q_kwargs({'~a': 10,'~b':20})
-<Q: (NOT (AND: (OR: (NOT (AND: ('a', 10))), (NOT (AND: ('b', 20))))))>
->>> ~Q_kwargs({'~a': 10,'~b':20},{'logic_and':True})
-<Q: (NOT (AND: (OR: (NOT (AND: ('a', 10))), (NOT (AND: ('b', 20))))))>
------using list-----
->>> Q_kwargs([{'a': 10,'b':20}],{'logic_and':False})
-<Q: (AND: ('a', 10), ('b', 20))>
->>> Q_kwargs([{'~a': 10,'~b':20}],{'logic_and':True,'negation':True})
-<Q: (NOT (AND: (OR: (NOT (AND: ('a', 10))), (NOT (AND: ('b', 20))))))>
------using str-----
->>> Q_kwargs('(a=10&b=20)')
-<Q: (AND: (AND: ('a', '10')), (AND: ('b', '20')))>
->>> Q_kwargs('((a=10)&(b=20))')
-<Q: (AND: ('a', '10'), ('b', '20'))>
->>> Q_kwargs('(*(~a=10|~b=20))')
-<Q: (NOT (AND: (NOT (AND: (OR: (NOT (AND: ('a', '10'))), (NOT (AND: ('b', '20'))))))))>
+Patterns are matched against the final html pages produced by the build
+(you should try to match `index.html`, not `docs/index.rst`).
+Patterns can include some special characters:
+
+- ``*`` matches everything
+- ``?`` matches any single character
+- ``[seq]`` matches any character in ``seq``
+
+.. code-block:: yaml
+   version: 2
+   search:
+      ignore:
+        # Ignore a single file
+        - 404.html
+        # Ignore all files under the search/ directory
+        - search/*
+        # Ignore all files that end with ref.html
+        - '*/ref.html'
+.. code-block:: yaml
+   version: 2
+   search:
+      ignore:
+        # Custom files to ignore
+        - file.html
+        - api/v1/*
+        # Defaults
+        - search.html
+        - search/index.html
+        - 404.html
+        - 404/index.html'
+.. note::
+
+   Since Read the Docs fallbacks to the original search engine when no results are found,
+   you may still see search results from ignored pages.
+
+Schema
+------
+
+You can see the complete schema
+`here <https://github.com/readthedocs/readthedocs.org/blob/main/readthedocs/rtd_tests/fixtures/spec/v2/schema.json>`_.
 
 
+Legacy ``build`` specification
+------------------------------
 
+The legacy ``build`` specification used a different set of Docker images,
+and only allowed you to specify the Python version.
+It remains supported for backwards compatibility reasons.
+Check out the :ref:`config-file/v2:build` above
+for an alternative method that is more flexible.
 
- OR of more than 2 Conditions :  "a=1 or b=2" (a=1|b=2) 
-Same thing as 2 EXCEPT "operator.and_" needs only 2 arguments
-using default Q operator
->>> Q(a=1)|Q(a=2)|Q(c=3)|Q(d=4)
-<Q: (OR: ('a', 1), ('a', 2), ('c', 3), ('d', 4))>
-using my Q_kwargs
------using dictionary-One Expression of reunion de la form (A | B | C |....| D) with default option {'logic_and':True}-------
->>> Q_kwargs({'a': 10,'b':20,'c':30}) #{'logic_and':True}
-<Q: (OR: {'a': 10}, {'b': 20}, {'c': 30})>
------using list-----
->>> Q_kwargs([{'a': 10,'b':20,'c':30}]) #{'logic_and':True}
-<Q: (OR: {'a': 10}, {'b': 20}, {'c': 30})>
------using str THE PARENTHESIS ARE NECESSARY-----
->>> Q_kwargs('(a=1|a=2|c=3|d=4)')
-<Q: (OR: ('a', '1'), ('a', '2'), ('c', '3'), ('d', '4'))>
->>> Q_kwargs('((a=1)|(a=2)|(c=3)|(d=4))')
-<Q: (OR: ('a', '1'), ('a', '2'), ('c', '3'), ('d', '4https://web.postman.co/request/10715584-2253d227-1037-4e86-829a-1e3efddba95a'))>
+.. code-block:: yaml
+   version: 2
+   build:
+     image: latest
+     apt_packages:
+       - libclang
+       - cmake
+   python:
+     version: "3.7"
+The legacy ``build`` specification also supports
+the ``apt_packages`` key described above.
 
-AND of 2 Conditions :  "a=1 AND b=2" (a=1&b=2) 
+.. warning::
 
-Same thing as 2 EXCEPT "operator.or_" needs only 2 arguments
-using default Q operator
->>> Q(a=1)&Q(a=2)&Q(c=3)&Q(d=4)
-<Q: (AND: ('a', 1), ('a', 2), ('c', 3), ('d', 4))>
-using my Q_kwargs
------using dictionary-----
--------One Expression of Intersections de la form (A & B & C &....& D) -------
->>> Q_kwargs({'a': 10,'b':20,'c':30},{'logic_and':False})
-<Q: (AND: {'a': 10}, {'b': 20}, {'c': 30})>
-----using list----
->>> Q_kwargs([{'a': 10,'b':20,'c':30}],{'logic_and':False})
-<Q: (AND: {'a': 10}, {'b': 20}, {'c': 30})>
------using str THE PARENTHESIS ARE NECESSARY-----
->>> Q_kwargs('(a=1&a=2&c=3&d=4)')
-<Q: (AND: (AND: ('a', '1')), (AND: ('a', '2')), (AND: ('c', '3')), (AND: ('d', '4')))>
->>> Q_kwargs('((a=1)&(a=2)&(c=3)&(d=4))')
-<Q: (AND: ('a', '1'), ('a', '2'), ('c', '3'), ('d', '4'))>
->>> Q_kwargs('((a=1&a=2)&(c=3)&(d=4))')
-<Q: (AND: (AND: ('a', '1')), (AND: ('a', '2')), ('c', '3'), ('d', '4'))>
->>> Q_kwargs('((a=1|a=2)|(c=3)|(d=4))')
-<Q: (OR: ('a', '1'), ('a', '2'), ('c', '3'), ('d', '4'))>
+   When using the new specification,
+   the ``build.image`` and ``python.version`` options cannot be used.
+   Doing so will error the build.
 
-MORE examples NESTED Conditions
-using default Q operator
->>> Q(a=1)&Q(a=2)&Q(c=3)|Q(d=4)
-<Q: (OR: (AND: ('a', 1), ('a', 2), ('c', 3)), ('d', 4))>
->>> Q(a=1)|Q(a=2)&Q(c=3)|Q(d=4)
-<Q: (OR: ('a', 1), (AND: ('a', 2), ('c', 3)), ('d', 4))>
+build (legacy)
+~~~~~~~~~~~~~~
 
-using my Q_kwargs
------using dictionary-----
+build.image (legacy)
+````````````````````
 
-----Negation of all the expression default is {'negation':False}----
->>> Q_kwargs({'~a': 10,'b':20},{'negation':True})
-<Q: (NOT (AND: (OR: (NOT (AND: {'a': 10})), {'b': 20})))>
->>> Q_kwargs([{'~a': 10,'b':20}],{'logic_and':False,'negation':True})
-<Q: (NOT (AND: (NOT (AND: {'a': 10})), {'b': 20}))>
+The Docker image used for building the docs.
 
->>> Q_kwargs({'~a': 10,'b':20},{'negation':False})
-<Q: (OR: (NOT (AND: {'a': 10})), {'b': 20})>
+:Type: ``string``
+:Options: ``stable``, ``latest``
+:Default: ``latest``
 
->>> Q_kwargs([{'~a': 10,'b':20}],{'logic_and':False,'negation':False})
-<Q: (AND: (NOT (AND: {'a': 10})), {'b': 20})>
-#Plus d'exemples Q_kwargs:
------using list-----
--------Multiple INTERSECTION of REUNIONS de la form (A | B | C) & (AA | BB | CC) & (AAA | BBB | CCC) with default option {'logic_and':True}-------
->>> Q_kwargs([{'a': 10,'b':20,'c':30},{'aa': 10,'bb':20,'cc':30},{'aaa': 10,'bbb':20,'ccc':30}]) #ou bien  with default {'logic_and':True
-<Q: (AND: (OR: {'a': 10}, {'b': 20}, {'c': 30}), (OR: {'aa': 10}, {'bb': 20}, {'cc': 30}), (OR: {'aaa': 10}, {'bbb': 20}, {'ccc': 30}))>
+Each image support different Python versions and has different packages installed,
+as defined here:
 
->>> Q_kwargs([{'a': 10,'b':20,'c':30},{'aa': 10,'bb':20,'cc':30},{'aaa': 10,'bbb':20,'ccc':30}],{'logic_and':True})
-<Q: (AND: (OR: {'a': 10}, {'b': 20}, {'c': 30}), (OR: {'aa': 10}, {'bb': 20}, {'cc': 30}), (OR: {'aaa': 10}, {'bbb': 20}, {'ccc': 30}))>
+* `stable <https://github.com/readthedocs/readthedocs-docker-images/tree/releases/5.x>`_: :buildpyversions:`stable`
+* `latest <https://github.com/readthedocs/readthedocs-docker-images/tree/releases/6.x>`_: :buildpyversions:`latest`
 
--------Multiple INTERSECTION of REUNIONS de la form (A & B & C) | (AA & BB & CC) | (AAA & BBB & CCC) with  option {'logic_and':False}-------
->>> Q_kwargs([{'a': 10,'b':20,'c':30},{'aa': 10,'bb':20,'cc':30},{'aaa': 10,'bbb':20,'ccc':30}],{'logic_and':False})
-<Q: (OR: (AND: {'a': 10}, {'b': 20}, {'c': 30}), (AND: {'aa': 10}, {'bb': 20}, {'cc': 30}), (AND: {'aaa': 10}, {'bbb': 20}, {'ccc': 30}))>
+python.version (legacy)
+```````````````````````
 
+The Python version (this depends on :ref:`config-file/v2:build.image (legacy)`).
 
+:Type: ``string``
+:Default: ``3``
 
+.. note::
 
------using str-----
->>> Q_kwargs('(*id=1)')
-<Q: (NOT (AND: ('id', '1')))>
->>> Q_kwargs('(-id=1)')
-<Q: (AND: ('-id', '1'))>
->>> Q_kwargs('(*(*-id=1))')
-<Q: (NOT (AND: (NOT (AND: (NOT (AND: ('-id', '1')))))))>
->>> Q_kwargs('(*(*-id=1)|(https://web.postman.co/request/10715584-2253d227-1037-4e86-829a-1e3efddba95aj=10))')
-<Q: (OR: (NOT (AND: ('-id', '1'))), ('j', '10'))>
->>> Q_kwargs('(*-id=1&-id=1)')
-<Q: (NOT (AND: (AND: ('-id', '1')), (AND: ('-id', '1'))))>
->>> Q_kwargs('(*(id=1&id=1))')
-<Q: (NOT (AND: (NOT (AND: (AND: ('id', '1')), (AND: ('id', '1'))))))>
->>> Q_kwargs('(*(id=1|id=1))')
-<Q: (NOT (AND: (NOT (AND: (OR: ('id', '1'), ('id', '1'))))))>
->>> Q_kwargs('(*(-id=1|id=1))')
-<Q: (NOT (AND: (NOT (AND: (OR: ('-id', '1'), ('id', '1'))))))>
->>> Q_kwargs('(*-id=1)')
-<Q: (NOT (AND: ('-id', '1')))>
->>> Q_kwargs('(*(*-id=1|id=1))')
-<Q: (NOT (AND: (NOT (AND: (NOT (AND: (OR: ('-id', '1'), ('id', '1'))))))))>
->>> Q_kwargs('(*(*-id=1|id=1)&(*k=55555&l=66666666))')
-<Q: (AND: (NOT (AND: (OR: ('-id', '1'), ('id', '1')))), (NOT (AND: (AND: ('k', '55555')), (AND: ('l', '66666666')))))>
->>> Q_kwargs('(((*-id=1|id=1)&(*k=55555&l=66666666))*)')
-<Q: (NOT (AND: ))>
->>> Q_kwargs('((*-id=1)&(-id=1))')
-<Q: (AND: (NOT (AND: ('-id', '1'))), ('-id', '1'))>
->>> Q_kwargs('(((*-id=1111&id=22222)|(id=333333&id=444444))&(*k=55555&l=66666666)&(-x=777777|x=888888))')
-<Q: (AND: (NOT (AND: (AND: ('k', '55555')), (AND: ('l', '66666666')))), (OR: ('-x', '777777'), ('x', '888888')))>
->>> Q_kwargs('((id=1111&id=22222&id=333333&id=444444&k=55555&l=66666666)|(x=777777|yy=ii))')
-<Q: (OR: (AND: (AND: ('id', '1111')), (AND: ('id', '22222')), (AND: ('id', '333333')), (AND: ('id', '444444')), (AND: ('k', '55555')), (AND: ('l', '66666666'))), ('x', '777777'), ('yy', 'ii'))>
->>> Q_kwargs('((id=1111|id=22222|id=333333|id=444444|k=55555|l=66666666)&(x=777777&yy=ii))')
-<Q: (AND: (OR: ('id', '1111'), ('id', '22222'), ('id', '333333'), ('id', '444444'), ('k', '55555'), ('l', '66666666')), (AND: ('x', '777777')), (AND: ('yy', 'ii')))>
->>> Q_kwargs('((*-id=1&id=1)|(id=1|-id=1))')
+   Make sure to use quotes (``"``) to make it a string.
+   We previously supported using numbers here,
+   but that approach is deprecated.
+
+.. warning::
+
+   If you are using a :ref:`Conda <config-file/v2:conda>` environment to manage
+   the build, this setting will not have any effect, as the Python version is managed by Conda.
+
+Migrating from v1
+-----------------
+
+Changes
+~~~~~~~
+
+- The version setting is required. See :ref:`config-file/v2:version`.
+- The default value of the :ref:`config-file/v2:formats` setting has changed to ``[]``
+  and it doesn't include the values from the web interface.
+- The top setting ``requirements_file`` was moved to ``python.install``
+  and we don't try to find a requirements file if the option isn't present.
+  See :ref:`config-file/v2:Requirements file`.
+- The setting ``conda.file`` was renamed to ``conda.environment``.
+  See :ref:`config-file/v2:conda.environment`.
+- The ``build.image`` setting has been replaced by ``build.os``.
+  See :ref:`config-file/v2:build.os`.
+  Alternatively, you can use the legacy ``build.image``
+  that now has only two options: ``latest`` (default) and ``stable``.
+- The settings ``python.setup_py_install`` and ``python.pip_install`` were replaced by ``python.install``.
+  And now it accepts a path to the package.
+  See :ref:`config-file/v2:Packages`.
+- The setting ``python.use_system_site_packages`` was renamed to ``python.system_packages``.
+  See :ref:`config-file/v2:python.system_packages`.
+- The build will fail if there are invalid keys (strict mode).
+
+.. warning::
+
+   Some values from the web interface are no longer respected,
+   please see :ref:`config-file/v2:Migrating from the web interface` if you have settings there.
+
+New settings
+~~~~~~~~~~~~
+
+- :ref:`config-file/v2:sphinx`
+- :ref:`config-file/v2:mkdocs`
+- :ref:`config-file/v2:submodules`
+- :ref:`config-file/v2:python.install`
+- :ref:`config-file/v2:search`
+
+Migrating from the web interface
+--------------------------------
+
+This should be pretty straightforward,
+just go to the :guilabel:`Admin` > :guilabel:`Advanced settings`,
+and find their respective setting in :ref:`here <config-file/v2:Supported settings>`.
+
+Not all settings in the web interface are per version, but are per project.
+These settings aren't supported via the configuration file.
+
+* ``Name``
+* ``Repository URL``
+* ``Repository type``
+* ``Language``
+* ``Programming language``
+* ``Project homepage``
+* ``Tags``
+* ``Single version``
+* ``Default branch``
+* ``Default version``
+* ``Show versions warning``
+* ``Privacy level``
+* ``Analytics code``
